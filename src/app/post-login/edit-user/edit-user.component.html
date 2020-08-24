@@ -1,0 +1,85 @@
+<div class="home-container">
+    <app-navbar></app-navbar>
+
+    <div class="container-body">
+
+        <button class="button-class" (click)="back()">Back</button>
+        <div class="right-site">
+            <div class="signin-body">
+                <h2 class="heading font-size4">Add New User</h2>
+                <form class="signin-form" [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+                    <div class="input-body">
+
+                        <!-- first name -->
+
+                        <label for="uname"><b>First Name</b></label>
+                        <input id="firstName" type="text" class="input-field email" formControlName="firstName"
+                            placeholder="Please enter first name" />
+                        <span class="text-danger"
+                            *ngIf="(f.firstName.touched || submitted) && f.firstName.errors?.required">
+                            Please enter firstName
+                        </span>
+
+                        <!-- last name -->
+
+                        <label for="uname"><b>Last Name</b></label>
+                        <input type="text" class="input-field email" formControlName="lastName"
+                            placeholder="Please enter last name" />
+                        <span class="text-danger"
+                            *ngIf="(f.lastName.touched || submitted) && f.lastName.errors?.required">
+                            Please enter last Name
+                        </span>
+
+                        <div class="gender-class">
+                            <label for="uname"><b>Gender</b></label>
+                            <input id="male" type="radio" class="input-field" value="Male" name="gender"
+                                formControlName="gender" />
+                            <input id="female" type="radio" class="input-field" value="Female" name="gender"
+                                formControlName="gender" />
+                        </div>
+                        <!-- mobile -->
+
+                        <label for="uname"><b>Mobile</b></label>
+                        <input type="text" onkeypress="return event.charCode>=48 && event.charCode<=57"
+                            class="input-field email" formControlName="mobile"
+                            placeholder="Please enter mobile number" />
+                        <span class="text-danger" *ngIf="(f.mobile.touched || submitted) && f.mobile.errors?.required">
+                            Please enter mobile number
+                        </span>
+                        <span class="text-danger" *ngIf="(submitted) && f.mobile.errors?.pattern">
+                            Please enter mobile number
+                        </span>
+
+
+                        <!-- mobile -->
+
+                        <label for="uname"><b>Email</b></label>
+                        <input type="text" class="input-field email" formControlName="email"
+                            placeholder="Please enter email" />
+                        <span class="text-danger" *ngIf="(f.email.touched || submitted) && f.email.errors?.required">
+                            Please enter email
+                        </span>
+                        <span class="text-danger" *ngIf="(submitted) && f.email.errors?.pattern">
+                            Please enter email
+                        </span>
+
+
+                        <!-- salary -->
+
+                        <label for="uname"><b>Salary</b></label>
+                        <input type="text" onkeypress="return event.charCode>=48 && event.charCode<=57"
+                            class="input-field email" formControlName="salary" placeholder="Please enter salary" />
+                        <span class="text-danger" *ngIf="(f.salary.touched || submitted) && f.salary.errors?.required">
+                            Please enter salary
+                        </span>
+                        <span class="text-danger" *ngIf="errorMessage">
+                            {{errorMessage}}
+                        </span>
+                    </div>
+                    <button class="button signin-button font-size6">Add User</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

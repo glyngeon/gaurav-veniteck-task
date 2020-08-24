@@ -1,0 +1,47 @@
+<div class="home-container">
+    <app-navbar></app-navbar>
+
+    <div class="container-body">
+        <div class="headings">
+            <h2>Employee</h2>
+            <button class="button-class" (click)="addUser()">Add User</button>
+        </div>
+        <div class="toggle-tab-one">
+            <div class="tab tab-left" [ngClass]="{'active-tab': currentTab == 1}" (click)="userList()">List</div>
+            <div class="tab tab-right" (click)="employee()" [ngClass]="{'active-tab': currentTab == 2}">Employee
+            </div>
+        </div>
+        <div class="toggle-tab-one toggle-tab-two" *ngIf="showActionFlag">
+            <div class="tab tab-left" [ngClass]="{'active-tab': currentChildTab == 1}" (click)="employee()">Employee
+                Details
+            </div>
+            <div class="tab tab-right" (click)="employeeAttechment()" [ngClass]="{'active-tab': currentChildTab == 2}">
+                Employee Attachment
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th *ngIf="showActionFlag">Action</th>
+                <th>Emp.Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Mobile No.</th>
+                <th>Email</th>
+                <th>Salary</th>
+            </tr>
+            <tr *ngFor="let item of usersResponse; let i = index">
+
+                <td class="action-button" *ngIf="showActionFlag">
+                    <button class="button-class edit-button" (click)="editUser(i)">Edit</button>
+                    <button class="button-class" (click)="deleteUser(i)">Delete</button>
+                </td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.firstName | titlecase }} {{ item.lastName | titlecase }}</td>
+                <td>{{ item.gender }}</td>
+                <td>{{ item.mobile }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.salary | currency: '₹ ' }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

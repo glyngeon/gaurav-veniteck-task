@@ -1,0 +1,42 @@
+<div class="home-container">
+    <app-navbar></app-navbar>
+
+    <div class="container-body">
+
+        <div class="right-site">
+            <div class="signin-body">
+                <h2 class="heading font-size4">Sign In</h2>
+                <form class="signin-form" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+                    <div class="input-body">
+                        <label for="uname"><b>Email</b></label>
+                        <input type="email" class="input-field email" formControlName="email"
+                            placeholder="Please enter email" />
+                        <span class="text-danger" *ngIf="(f.email.touched || submitted) && f.email.errors?.required">
+                            Please enter email
+                        </span>
+                        <span class="text-danger" *ngIf="f.email.errors?.email">
+                            Please enter a valid email
+                        </span>
+
+                        <label for=" uname"><b>Password</b></label>
+                        <input type="password" class="input-field email" formControlName="password"
+                            placeholder="Please enter password" />
+                        <span class="text-danger"
+                            *ngIf="(f.password.touched || submitted) && f.password.errors?.required">
+                            Password is required
+                        </span>
+                        <span class="text-danger" *ngIf="f.password.touched && f.password.errors?.invalidPassword">
+                            Please enter valid password
+                        </span>
+
+                        <p class="forgot-password font-size8">
+                            Forgot Password
+                        </p>
+                    </div>
+                    <button class="button signin-button font-size6">Sign In</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
